@@ -1,0 +1,5 @@
+let $VIM_PATH= fnamemodify(resolve(expand('<sfile>:p')),':h:h')
+if &runtimepath !~# $VIM_PATH
+	set runtimepath ^= $VIM_PATH
+endif
+call etc#init()
