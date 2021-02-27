@@ -1,4 +1,5 @@
 inoremap jk <ESC>
+set nu
 let g:mapleader="\<Space>"
 let g:maplocalleader=";"
 
@@ -175,3 +176,13 @@ endif
 
 let s:enable_whichkey = dein#tap('vim-which-key')
 if s:enable_whichkey
+	function! InitWhichkey()
+		let s:leader_key= substitute(get(g:, "mapleader","\\"), ' ' , '<space>', '')
+		let s:localleader_key = get(g:, 'maplocalleader', ';')
+		execute 'nnoremap <silent> <Leader> :<c-u>WhichKey "'.s:leader_key.'"<CR>'
+		execute 'vnoremap <silent> <Leader> :<c-u>WhichKeyVisual "'s:leader_key.'"<CR>'
+		execute 'nnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual "' s:localleader_key.'"<CR>'
+	endfunction
+	call InitWhichkey()
+endif
+
