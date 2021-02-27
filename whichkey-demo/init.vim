@@ -1,3 +1,7 @@
+inoremap jk <ESC>
+let g:mapleader="\<Space>"
+let g:maplocalleader=";"
+
 if &compatible
   set nocompatible
 endif
@@ -9,7 +13,18 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('liuchengxu/vim-which-key',{'on_cmd': ['Whichkey', 'Whichkey!']})
+  call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})
+  call dein#add('liuchengxu/vim-which-key',{'on_cmd': ['Whichkey', 'Whichkey!'],
+			  \'hook_add': join(["let g:which_key_map =  { 'name' : 'Leader'}",
+			  \"let g:which_key_localmap =  {'name' : 'LocalLeader'}"], "\n"),
+			  \"hook_post_source": 
+			  \ "function! s:register_whichkey()\n
+			  \	let s:leader_key=substitute(get(g:, 'mapleader', '\\'), ' ', '<Space>', '')\n
+			  \ 	let s:localleader_key= get(g:, 'maplocalleader', ';')\n
+			  \	call which_key#register(s:leader_key, 'g:which_key_map')\n
+			  \	call which_key#register(s:localleader_key, 'g:which_key_localmap')\n
+			  \ endfunction \n
+			  \ call s:register_whichkey()"})
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -153,7 +168,10 @@ if  s:current_colorscheme == "base16-default-dark"
     highlight WhichKeySeperator guibg=NONE ctermbg=NONE guifg=#a1b56c ctermfg=02
 endif
 
-call which_key#register('<Space>', 'g:which_key_map')
-call which_key#register(';', 'g:which_key_localmap')
-call which_key#register(']', 'g:which_key_rsbgmap')
-call which_key#register('[', 'g:which_key_lsbgmap')
+" call which_key#register('<Space>', 'g:which_key_map')
+" call which_key#register(';', 'g:which_key_localmap')
+" call which_key#register(']', 'g:which_key_rsbgmap')
+" call which_key#register('[', 'g:which_key_lsbgmap')
+
+let s:enable_whichkey = dein#tap('vim-which-key')
+if s:enable_whichkey
