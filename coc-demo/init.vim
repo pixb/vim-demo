@@ -1,3 +1,13 @@
+inoremap jk <ESC>
+set number
+let g:mapleader="\<Space>"
+let g:maplocalleader=";"
+
+let $VIM_PATH = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+" disable all keymaps of plugins
+let g:thinkvim_disable_mappings = 0
+" disable some plugins keymap
+let g:thinkvim_disable_pmaping = []
 if &compatible
   set nocompatible
 endif
@@ -9,8 +19,11 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})  
+  call dein#add('neoclide/coc.nvim', {'merged':0, 
+			  \'rev': 'release', 
+			  \'build': 'yarn install --frozen-lockfile',
+			  \'hook_add': 'source $VIM_PATH/module-coc.vim',
+			  \'hook_source': 'source $VIM_PATH/module-lsp.vim'})  
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -26,3 +39,4 @@ syntax enable
 if has('vim-starting')
     call dein#install()
 endif
+source $VIM_PATH/keybinds.vim
