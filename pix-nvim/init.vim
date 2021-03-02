@@ -108,6 +108,71 @@ autocmd InsertEnter * se cul
 " 显示命令
 set showcmd
 
+" 命令模式自动补全
+" set wildmenu
+" set wildmode=longest:list,full " 列出所有可能性
+" 如下文件不会参与自动补全
+set wildignore=*.so,*~,*/.git/*,*/.svn/*,*/.DS_Store,*/tmp/*
+
+" 搜索
+set hlsearch    " 搜索时高亮
+" 临时关闭高亮
+exec "nohlsearch"
+set incsearch   " 搜索匹配自动跳转
+set smartcase " 智能忽略大小写
+" set ignorecase 忽略大小写
+set wrapscan " 搜索在文件尾时折回文件头
+
+" 括号配对显示
+set showmatch
+" 增加htmp字符匹配
+set matchpairs+=<:> " Add HTML brackets to pair matching
+" 显示匹配括号的时间
+set matchtime=1 " Tenths of a second to show the matching paren
+set cpoptions-=m    " showmatch will wait 0.5s or until a char is typed
+" backspace修复
+set backspace=indent,eol,start
+" 自动缩进
+set ai
+
+" 不生成备份文件
+set noundofile
+set undodir=~/.tmp/undo
+set nobackup
+set noswapfile
+
+" 打开文件监视
+set autoread
+set autowrite  " 自动保存
+" 历史条数
+set history=1000
+" 允许在不保存时切换缓存区
+set hidden
+" 增加符号列
+set signcolumn=yes
+" 显示可隐藏字符
+if has('conceal')
+    set conceallevel=3 concealcursor=niv
+endif
+
+" 目录设置
+" Vim Directories {{{
+" ---------------
+set undofile swapfile nobackup
+set directory=$DATA_PATH/swap//,$DATA_PATH,~/tmp,/var/tmp,/tmp
+set undodir=$DATA_PATH/undo//,$DATA_PATH,~/tmp,/var/tmp,/tmp
+set backupdir=$DATA_PATH/backup/,$DATA_PATH,~/tmp,/var/tmp,/tmp
+set viewdir=$DATA_PATH/view/
+set nospell spellfile=$VIM_PATH/spell/en.utf-8.add
+
+
+
+
+
+
+
+
+
 
 
 
