@@ -30,7 +30,15 @@ call dein#add('kristijanhusak/defx-icons', { 'on_source': 'defx.nvim',
 
 call dein#add('Yggdroot/indentLine', { 'on_event': 'BufReadPre', 
             \ 'hook_source': 'source $VIM_PATH/module-indentline.vim'})
-if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-endif
+" 图标插件
+call dein#add('ryanoasis/vim-devicons')
+" 主题插件
+call dein#add('glepnir/oceanic-material')
+" 状态栏插件
+call dein#add('glepnir/spaceline.vim',
+            \ { 'on_event': ['BufReadPre', 'BufNew'],
+            \ 'hook_add': "let g:spaceline_seperate_style='slant-cons'"})
+" 标签栏
+call dein#add('pixb/vim-buffet', { 'on_event': [ 'BufReadPre', 'BufNew']})
+" 启动页
+call dein#add('glepnir/dashboard-nvim', { 'hook_add': 'source $VIM_PATH/dashboard-nvim.vim'})

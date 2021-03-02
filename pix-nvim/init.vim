@@ -1,10 +1,12 @@
+" 修改Leader键
+let g:mapleader="\<Space>"
+let g:maplocalleader=";"
 " ========================自定义配置=================================
 let $VIM_PATH = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 " disable all keymaps of plugins
 let g:thinkvim_disable_mappings = 0
 " disable some plugins keymap
 let g:thinkvim_disable_pmaping = []
-
 " ==============================dein===============================
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -23,17 +25,19 @@ endif
 " ===============================plugin keybinds======================
 source $VIM_PATH/keybinds.vim
 
+"================================plugin settings=====================
+"oceanic-material
+set background=dark
+colorscheme oceanic_material
+
 " ==========================通用配置================================
 " 修改ESC键位
 inoremap jk <ESC>
 " 打开行号
 set number
 set rnu
-" 修改Leader键
-let g:mapleader="\<Space>"
-let g:maplocalleader=";"
 " 打开高亮
-syntax enable
+" syntax enable
 " 打开256色支持
 set t_Co=256
 " 打开真色支持
@@ -45,7 +49,7 @@ endif
 filetype plugin indent on
 " 不适配低版本，为了有更好的支持
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 " 设置tab缩进
@@ -104,7 +108,6 @@ set cursorline
 " 浅色显示
 autocmd InsertLeave * se nocul
 autocmd InsertEnter * se cul
-
 " 显示命令
 set showcmd
 
@@ -164,8 +167,6 @@ set undodir=$DATA_PATH/undo//,$DATA_PATH,~/tmp,/var/tmp,/tmp
 set backupdir=$DATA_PATH/backup/,$DATA_PATH,~/tmp,/var/tmp,/tmp
 set viewdir=$DATA_PATH/view/
 set nospell spellfile=$VIM_PATH/spell/en.utf-8.add
-
-
 
 
 
