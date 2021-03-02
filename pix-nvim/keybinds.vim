@@ -1,5 +1,3 @@
-echom "kebinds run----------------------"
-
 function! s:load_clap() abort
   if dein#tap('vim-clap')
     nnoremap <silent> <Leader>tc :<C-u>Clap colors<CR>

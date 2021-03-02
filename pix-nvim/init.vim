@@ -10,10 +10,10 @@ let g:thinkvim_disable_pmaping = []
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-  source $VIM_PATH/plugins.vim
-  call dein#end()
-  call dein#save_state()
+    call dein#begin('~/.cache/dein')
+    source $VIM_PATH/plugins.vim
+    call dein#end()
+    call dein#save_state()
 endif
 
 if has('vim-starting')
@@ -73,7 +73,7 @@ set autoindent  " 自动使用上一行的格式
 
 " 空格缩进线
 set list
-set listchars=trail:▫,nbsp:+,extends:→,precedes:← "tab:▸\  " 这里TAB不设置因为使用了缩进插件 
+set listchars=trail:▫ ",nbsp:+,extends:→,precedes:← ,tab:▸\  " 这里TAB不设置因为使用了缩进插件 
 
 " 折叠配置
 set foldmethod=marker
@@ -107,3 +107,12 @@ autocmd InsertEnter * se cul
 
 " 显示命令
 set showcmd
+
+
+
+
+
+
+
+
+
