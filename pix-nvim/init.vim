@@ -7,6 +7,7 @@ let $VIM_PATH = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let g:thinkvim_disable_mappings = 0
 " disable some plugins keymap
 let g:thinkvim_disable_pmaping = []
+let g:thinkvim_version="2.6.5"
 " ==============================dein===============================
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -167,14 +168,6 @@ set undodir=$DATA_PATH/undo//,$DATA_PATH,~/tmp,/var/tmp,/tmp
 set backupdir=$DATA_PATH/backup/,$DATA_PATH,~/tmp,/var/tmp,/tmp
 set viewdir=$DATA_PATH/view/
 set nospell spellfile=$VIM_PATH/spell/en.utf-8.add
-
-
-
-
-
-
-
-
 
 
 

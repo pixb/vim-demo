@@ -1,9 +1,4 @@
 call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-call dein#add('neoclide/coc.nvim', {'merged':0, 
-            \ 'rev': 'release', 
-            \ 'build': 'yarn install --frozen-lockfile',
-            \ 'hook_add': 'source $VIM_PATH/module-coc.vim',
-            \ 'hook_source': 'source $VIM_PATH/module-lsp.vim'})  
 call dein#add('liuchengxu/vim-clap', { 'merged': 0, 
             \ 'build': 'bash install.sh', 
             \ 'on_map':'{ n: <Plug>}', 
@@ -41,4 +36,49 @@ call dein#add('glepnir/spaceline.vim',
 " 标签栏
 call dein#add('pixb/vim-buffet', { 'on_event': [ 'BufReadPre', 'BufNew']})
 " 启动页
-call dein#add('glepnir/dashboard-nvim', { 'hook_add': 'source $VIM_PATH/dashboard-nvim.vim'})
+call dein#add('glepnir/dashboard-nvim')
+
+" Completion{{{
+" 自动补全
+call dein#add('neoclide/coc.nvim', {'merged':0, 
+            \ 'build': 'yarn install --frozen-lockfile',
+            \ 'hook_add': 'source $VIM_PATH/module-coc.vim',
+            \ 'hook_source': 'source $VIM_PATH/module-lsp.vim'})  
+" 常用语
+call dein#add('honza/vim-snippets', { 'depends': 'coc.nvim' })
+" }}}
+
+" FileType{{{ 
+" 文件类型
+call dein#add('Shougo/context_filetype.vim')
+" log高亮
+call dein#add('MTDL9/vim-log-highlighting', {'on_ft': 'log'})
+" 快速书写markdown
+call dein#add('openpix/vim-md-write', {'on_ft': 'markdown'})
+" markdown表格书写工具
+call dein#add('dhruvasagar/vim-table-mode', {'on_ft': 'markdown'})
+" markdown插件
+call dein#add('plasticboy/vim-markdown', {'on_ft': 'markdown',
+            \ 'hook_add': join([
+            \ "let g:vim_markdown_folding_level = 1",
+            \ "let g:vim_markdown_folding_style_pythonic = 1",
+            \ "let g:vim_markdown_frontmatter = 1",
+            \ "let g:vim_markdown_auto_insert_bullets = 1",
+            \ "let g:vim_markdown_new_list_item_indent = 0",
+            \ "let g:vim_markdown_conceal_code_blocks = 0",
+            \ "let g:vim_markdown_conceal = 0",
+            \ "let g:vim_markdown_strikethrough = 1",
+            \ "let g:vim_markdown_edit_url_in = 'vsplit'",
+            \ "let g:vim_markdown_fenced_languages = [",
+            \ 'c++=cpp',
+            \ 'viml=vim',
+            \ 'bash=sh',
+            \ 'ini=dosini',
+            \ 'js=javascript',
+            \ 'json=javascript',
+            \ 'jsx=javascriptreact',
+            \ 'tsx=typescriptreact',
+            \ 'docker=Dockerfile',
+            \ 'makefile=make',
+            \ "'py=python']"])})
+" }}}
