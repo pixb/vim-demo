@@ -50,7 +50,7 @@ call dein#add('plasticboy/vim-markdown', {'on_ft': 'markdown',
 			\ "let g:vim_markdown_strikethrough = 1",
 			\ "let g:vim_markdown_edit_url_in = 'vsplit'",
 			\ "let g:vim_markdown_fenced_languages = ['c++=cpp','viml=vim','bash=sh','ini=dosini','js=javascript','json=javascript','jsx=javascriptreact','tsx=typescriptreact','docker=Dockerfile','makefile=make','py=python']"], "\n")})
-" markdown支持github分隔语法
+" markdown支持github分格语法
 call dein#add('rhysd/vim-gfm-syntax', { 'depends': 'vim-markdown',
 			\ 'on_ft': 'markdown',
 			\ 'hook_add': join(["let g:gfm_syntax_enable_always = 1", 
@@ -103,6 +103,7 @@ call dein#add('liuchengxu/vim-which-key', {'on_cmd': '[WhichKey, Whichkey!]',
 " }}}
 
 " File manager {{{
+" 文件浏览器
 call dein#add('Shougo/defx.nvim', {'on_cmd': 'Defx','hook_source': 'source $VIM_PATH/module-defx.vim'})
 call dein#add('kristijanhusak/defx-git', { 'on_source': "let g:defx_git#indicators = {
 			\ 'Modified'  : '•',
@@ -129,6 +130,7 @@ call dein#add('voldikss/vim-floaterm', {
 " }}}
 
 " Coding {{{
+" 注释插件
 call dein#add('tyru/caw.vim', {'depends': 'context_filetype.vim', 'on_map': '{ nx: <Plug> }'})
 " 缩进线插件
 call dein#add('Yggdroot/indentLine', { 'on_event': 'BufReadPre', 
