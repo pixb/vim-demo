@@ -8,6 +8,11 @@ let g:thinkvim_disable_mappings = 0
 " disable some plugins keymap
 let g:thinkvim_disable_pmaping = []
 let g:thinkvim_version="2.6.5"
+" ===================================================================
+" 不适配低版本，为了有更好的支持
+if &compatible
+    set nocompatible
+endif
 " ==============================dein===============================
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -48,10 +53,6 @@ endif
 
 " 文件格式识别支持
 filetype plugin indent on
-" 不适配低版本，为了有更好的支持
-if &compatible
-    set nocompatible
-endif
 
 " 设置tab缩进
 " 是否将tab转换为空格,转换
