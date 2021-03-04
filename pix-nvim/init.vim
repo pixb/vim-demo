@@ -27,10 +27,6 @@ endif
 if has('vim-starting')
     call dein#install()
 endif
-
-" ===============================plugin keybinds======================
-source $VIM_PATH/keybinds.vim
-
 "================================plugin settings=====================
 "oceanic-material
 set background=dark
@@ -38,3 +34,9 @@ colorscheme oceanic_material
 
 " ==========================通用配置================================
 source $VIM_PATH/general.vim
+
+" ==========================通用配置================================
+source $VIM_PATH/filetype.vim
+
+" ===============================plugin keybinds======================
+source $VIM_PATH/keybinds.vim

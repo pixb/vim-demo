@@ -1,4 +1,3 @@
-echom "--------------defx-------------"
 call defx#custom#option('_', {
             \ 'resume': 1,
             \ 'winwidth': 30,
@@ -116,7 +115,7 @@ function! s:defx_mappings() abort
 
     " Selection
     nnoremap <silent><buffer><expr> *  defx#do_action('toggle_select_all')
-    nnoremap <silent><buffer><expr><nowait> <Space>
+    nnoremap <silent><buffer><expr><now$VIM_PATH/module-defx.vimait> <Space>
                 \ defx#do_action('toggle_select') . 'j'
 
     nnoremap <silent><buffer><expr> S  defx#do_action('toggle_sort', 'Time')

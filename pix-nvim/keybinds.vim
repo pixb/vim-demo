@@ -145,6 +145,27 @@ function! s:load_coc() abort
     nmap gcj :execute 'CocCommand docthis.documentThis'<CR>
 endfunction
 
+function! InitCaw() abort
+  if ! &l:modifiable
+    silent! nunmap <buffer> gc
+    silent! xunmap <buffer> gc
+    silent! nunmap <buffer> gcc
+    silent! xunmap <buffer> gcc
+  else
+    nmap <buffer> gc <Plug>(caw:prefix)
+    xmap <buffer> gc <Plug>(caw:prefix)
+    nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+    xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+  endif
+endfunction
+
+function! s:load_caw() abort
+  if dein#tap('caw.vim')
+    autocmd FileType * call InitCaw()
+    call InitCaw()
+  endif
+endfunction
+
 function! s:load_defx() abort
     if dein#tap('defx.nvim')
         nnoremap <silent> <Leader>e
@@ -154,9 +175,63 @@ function! s:load_defx() abort
     endif
 endfunction
 
+function! s:load_floaterm() abort
+  if dein#tap('vim-floaterm')
+    nnoremap <silent> <Leader>ot :<C-u>FloatermToggle<CR>
+    nnoremap <silent> <Leader>gz :<C-u>FloatermNew height=0.7 width=0.8 lazygit<CR>
+  endif
+endfunction
+
+function! s:load_normalmap() abort
+	" Write buffer(save)"
+	nnoremap <C-s> :<C-u>write<CR>
+	inoremap jk <ESC>
+	" smart move
+	nnoremap j gj
+	nnoremap k gk
+	vnoremap j gj
+	vnoremap k gk
+	" yank to line end
+	nnoremap Y y$
+	" Whitespace jump (see plugin/whitespace.vim)
+	nnoremap ]w :<C-u>WhitespaceNext<CR>
+	nnoremap [w :<C-u>WhitespacePrev<CR>
+	" Remove spaces at the end of lines
+  nnoremap <silent> <Space>cw :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
+endfunction
+
+function! s:load_windowmap() abort
+	"switch windw
+	nnoremap <C-h> <C-w>h
+	nnoremap <C-l> <C-w>l
+	nnoremap <C-j> <C-w>j
+	nnoremap <C-k> <C-w>k
+	" window
+	nnoremap <Leader><TAB> <C-O><CR>
+	nnoremap <leader>ws :<C-u>sp<CR>
+	nnoremap <leader>wv :<C-u>vs<CR>
+	nnoremap <leader>wh <C-w>h
+	nnoremap <leader>wj <C-w>j
+	nnoremap <leader>wk <C-w>k
+	nnoremap <leader>wl <C-w>l
+	nnoremap <leader>wH <C-w>H
+	nnoremap <leader>wJ <C-w>J
+	nnoremap <leader>wK <C-w>K
+	nnoremap <leader>wL <C-w>L
+	nnoremap <leader>wx <C-w>x
+	nnoremap <leader>wc <C-w>c
+	nnoremap <leader>wo <C-w>o
+	nnoremap <leader>wR <C-w>R
+	" settings for resize splitted window
+	nmap <C-w>[ :vertical resize -3<CR>
+	nmap <C-w>] :vertical resize +3<CR>
+endfunction
+
 let s:plugins = {
             \ 'coc_clap':'coc-clap', 'buffet': 'vim-buffet',
             \ 'coc':'coc.nvim','clap': 'vim-clap', 'defx': 'defx.nvim',
+            \ 'normalmap': 'normal', 'windowmap': 'window',
+						\ 'floaterm': 'vim-floaterm','caw': 'caw.vim'
             \ }
 
 function! s:load_plugins_keybinds(pmap) abort
